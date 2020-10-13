@@ -17,7 +17,7 @@ spec:
         app: pages
     spec:
      containers:
-     - image: imsudip84/pages:config
+     - image: imsudip84/pages:pipeline
        name: pages
        ports:
        - containerPort: 8080
