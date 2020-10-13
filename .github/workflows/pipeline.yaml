@@ -26,9 +26,9 @@ jobs:
       - name: build-docker-image
         uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.imsudip84 }}
-          password: ${{ secrets.Gang*1234 }}
-          repository: ${{ secrets.imsudip84 }}/pages
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ secrets.DOCKER_USERNAME }}/pages
           tags: pipeline
 
   deploy-to-cluster:
@@ -46,8 +46,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AKIARVVEBSPL7SP23AJ4 }}
-          aws-secret-access-key: ${{ secrets.eDzgRR+mdrQsZynvo+17BaE03fVVqogzzWARDPZ+ }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
       - name: EKS Login
         run: |
@@ -56,4 +56,4 @@ jobs:
           kubectl apply -f deployment/pages-namespace.yaml
           kubectl apply -f deployment/pages-config.yaml
           kubectl apply -f deployment/pages-service.yaml
-          kubectl apply -f deployment/pages-deployment.yaml
+          kubectl apply -f deployment/pages-deployment.yamly -f deployment/pages-deployment.yaml
